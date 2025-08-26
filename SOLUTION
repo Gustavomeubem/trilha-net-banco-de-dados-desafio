@@ -1,0 +1,241 @@
+CREATE DATABASE [Filmes]
+GO
+USE [Filmes]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Atores](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PrimeiroNome] [varchar](20) NULL,
+	[UltimoNome] [varchar](20) NULL,
+	[Genero] [varchar](1) NULL,
+ CONSTRAINT [PK_actor] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ElencoFilme](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdAtor] [int] NOT NULL,
+	[IdFilme] [int] NULL,
+	[Papel] [varchar](30) NULL,
+ CONSTRAINT [PK_ElencoFilme] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Filmes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nome] [varchar](50) NULL,
+	[Ano] [int] NULL,
+	[Duracao] [int] NULL,
+ CONSTRAINT [PK_movie] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FilmesGenero](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdGenero] [int] NULL,
+	[IdFilme] [int] NULL,
+ CONSTRAINT [PK_FilmesGenero] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Generos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Genero] [varchar](20) NULL,
+ CONSTRAINT [PK_genres] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-- Dados genéricos para Atores
+SET IDENTITY_INSERT [dbo].[Atores] ON 
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (1, N'João', N'Silva', N'M')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (2, N'Maria', N'Santos', N'F')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (3, N'Pedro', N'Oliveira', N'M')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (4, N'Ana', N'Costa', N'F')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (5, N'Carlos', N'Pereira', N'M')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (6, N'Laura', N'Rodrigues', N'F')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (7, N'Paulo', N'Almeida', N'M')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (8, N'Juliana', N'Lima', N'F')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (9, N'Ricardo', N'Martins', N'M')
+GO
+INSERT [dbo].[Atores] ([Id], [PrimeiroNome], [UltimoNome], [Genero]) VALUES (10, N'Fernanda', N'Carvalho', N'F')
+GO
+SET IDENTITY_INSERT [dbo].[Atores] OFF
+GO
+
+-- Dados genéricos para Filmes
+SET IDENTITY_INSERT [dbo].[Filmes] ON 
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (1, N'Aventura Espacial', 2020, 120)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (2, N'O Mistério do Tesouro', 2018, 105)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (3, N'Amor em Paris', 2019, 115)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (4, N'A Missão Secreta', 2021, 130)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (5, N'Noite de Terror', 2017, 95)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (6, N'O Último Desafio', 2022, 140)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (7, N'Riso Garantido', 2020, 88)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (8, N'Coração Valente', 2019, 125)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (9, N'O Enigma Final', 2021, 135)
+GO
+INSERT [dbo].[Filmes] ([Id], [Nome], [Ano], [Duracao]) VALUES (10, N'Dança dos Sonhos', 2018, 110)
+GO
+SET IDENTITY_INSERT [dbo].[Filmes] OFF
+GO
+
+-- Dados genéricos para Gêneros
+SET IDENTITY_INSERT [dbo].[Generos] ON 
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (1, N'Ação')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (2, N'Aventura')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (3, N'Comédia')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (4, N'Drama')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (5, N'Romance')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (6, N'Suspense')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (7, N'Terror')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (8, N'Ficção Científica')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (9, N'Musical')
+GO
+INSERT [dbo].[Generos] ([Id], [Genero]) VALUES (10, N'Fantasia')
+GO
+SET IDENTITY_INSERT [dbo].[Generos] OFF
+GO
+
+-- Dados genéricos para ElencoFilme
+SET IDENTITY_INSERT [dbo].[ElencoFilme] ON 
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (1, 1, 1, N'Herói Principal')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (2, 2, 1, N'Interestelar')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (3, 3, 2, N'Detetive')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (4, 4, 3, N'Protagonista')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (5, 5, 4, N'Agente Secreto')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (6, 6, 5, N'Vítima')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (7, 7, 6, N'Competidor')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (8, 8, 7, N'Comediante')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (9, 9, 8, N'Guerreiro')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (10, 10, 9, N'Investigador')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (11, 1, 10, N'Dançarino')
+GO
+INSERT [dbo].[ElencoFilme] ([Id], [IdAtor], [IdFilme], [Papel]) VALUES (12, 2, 6, N'Co-protagonista')
+GO
+SET IDENTITY_INSERT [dbo].[ElencoFilme] OFF
+GO
+
+-- Dados genéricos para FilmesGenero
+SET IDENTITY_INSERT [dbo].[FilmesGenero] ON 
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (1, 8, 1)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (2, 2, 1)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (3, 6, 2)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (4, 5, 3)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (5, 1, 4)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (6, 7, 5)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (7, 1, 6)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (8, 3, 7)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (9, 4, 8)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (10, 6, 9)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (11, 9, 10)
+GO
+INSERT [dbo].[FilmesGenero] ([Id], [IdGenero], [IdFilme]) VALUES (12, 10, 10)
+GO
+SET IDENTITY_INSERT [dbo].[FilmesGenero] OFF
+GO
+
+-- Constraints (mantidas do original)
+ALTER TABLE [dbo].[ElencoFilme]  WITH CHECK ADD  CONSTRAINT [FK__ElencoFil__IdAto__2C3393D0] FOREIGN KEY([IdAtor])
+REFERENCES [dbo].[Atores] ([Id])
+GO
+ALTER TABLE [dbo].[ElencoFilme] CHECK CONSTRAINT [FK__ElencoFil__IdAto__2C3393D0]
+GO
+ALTER TABLE [dbo].[ElencoFilme]  WITH CHECK ADD  CONSTRAINT [FK__ElencoFil__IdFil__2D27B809] FOREIGN KEY([IdFilme])
+REFERENCES [dbo].[Filmes] ([Id])
+GO
+ALTER TABLE [dbo].[ElencoFilme] CHECK CONSTRAINT [FK__ElencoFil__IdFil__2D27B809]
+GO
+ALTER TABLE [dbo].[FilmesGenero]  WITH CHECK ADD  CONSTRAINT [FK__FilmesGen__IdFil__2F10007B] FOREIGN KEY([IdFilme])
+REFERENCES [dbo].[Filmes] ([Id])
+GO
+ALTER TABLE [dbo].[FilmesGenero] CHECK CONSTRAINT [FK__FilmesGen__IdFil__2F10007B]
+GO
+ALTER TABLE [dbo].[FilmesGenero]  WITH CHECK ADD  CONSTRAINT [FK__FilmesGen__IdGen__2E1BDC42] FOREIGN KEY([IdGenero])
+REFERENCES [dbo].[Generos] ([Id])
+GO
+ALTER TABLE [dbo].[FilmesGenero] CHECK CONSTRAINT [FK__FilmesGen__IdGen__2E1BDC42]
+GO
